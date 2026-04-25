@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
@@ -12,13 +13,13 @@ app.use(express.json());
 
 
 
-const port = process.env.port || 3000;
+const port = process.env.Port || 3000;
 
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'students'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 
