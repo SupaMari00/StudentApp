@@ -19,12 +19,12 @@ const db = mysql.createPool({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE 
+  database: process.env.MYSQLDATABASE, 
 });
 
 
 app.post("/api/adduser", (req,res) => {
-  sql = "INSERT INTO student_details (name, email, age, gender) VALUES (?, ?, ?, ?)";
+  const sql = "INSERT INTO student_details (name, email, age, gender) VALUES (?, ?, ?, ?)";
   const values = [
     req.body.name,
     req.body.email,
