@@ -25,6 +25,15 @@ const db = mysql.createPool({
   port: process.env.MYSQLPORT 
 });
 
+db.getConnection((err, connection) => {
+if (err) {
+console.error("DB CONNECTION ERROR:", err);
+} else {
+console.log("DB CONNECTED SUCCESSFULLY");
+connection.release();
+}
+});
+
 
 app.post("/api/adduser", (req,res) => {
   const sql = "INSERT INTO student_details (name, email, age, gender) VALUES (?, ?, ?, ?)";
