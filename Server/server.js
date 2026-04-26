@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
-if (process.env .NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
@@ -16,11 +16,6 @@ app.use(express.json());
 
 
 const port = process.env.PORT || 3000;
-
-console.log("MYSQLHOST: ", process.env.MYSQLHOST);
-console.log("MYSQLUSER: ", process.env.MYSQLUSER);
-console.log("MYSQLDATABASE: ", process.env.MYSQLDATABASE);
-
 
 const db = mysql.createPool({
   host: process.env.MYSQLHOST,
